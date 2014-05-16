@@ -2,9 +2,11 @@ NetbeansCreateAnnotatedSpringProject
 ====================================
 The application is used to help create a Spring MVC project in NetBeans 8+.
 
-The main purpose is to create a Java Config based application rather than the xml Config default which NetBeans creates by default.
+The main purpose is to create a Java Config based application rather than the xml Config which NetBeans creates by default.
 
-The app adds the packages you supply as well as 3 main java files (AppConfig, MvcConfig and a MainController) with minimal code, but enough to run your Spring app straight away.
+It also deletes the unessasary redirect.jsp Netbeans creates, as well as the now redundant xml files.
+
+The app rewrites the web.xml file to allow for Java Config and adds the packages you supply, as well as 3 main java files (AppConfig, MvcConfig and a MainController) with minimal code, but enough to run your Spring app straight away.
 
 To use you can download the .jar file from the dist folder.
 
