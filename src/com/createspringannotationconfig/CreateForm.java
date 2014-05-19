@@ -171,7 +171,7 @@ public class CreateForm extends javax.swing.JFrame {
         String strPackageController = jTextField3.getText();
         Frame frame = new Frame();
                 
-        file = new File("C:\\Users\\Craig\\Documents\\NetBeansProjects\\" + project);
+        file = new File(netBeansPath + File.separator + project);
         if ("".equals(project)) {
             JOptionPane.showMessageDialog(frame, "Please Provide your NetBeans path.", "Error", JOptionPane.ERROR_MESSAGE);
         } else if ("".equals(project)) {

@@ -19,22 +19,22 @@ public class FormActions {
     
     private String project;    
     private final String USER_PATH;
-    private final String SRC_PATH = "src\\java";
-    private final String WEB_PATH = "web\\WEB-INF";
+    private final String SRC_PATH = "src" + File.separator + "java";
+    private final String WEB_PATH = "web" + File.separator + "WEB-INF";
     
     public FormActions(){
         this.USER_PATH = "";
     }
     
     public FormActions(String netbeans, String project) {
-        this.USER_PATH = netbeans + "\\";
+        this.USER_PATH = netbeans + File.separator;
         this.project = project;
     }
     
     public void doCreateWebXml(String configPackage, String controllerPackage) {
         String f = new File(".").getAbsolutePath();
-        Path source = Paths.get(f + "\\src\\webxml.txt");
-        Path destination = Paths.get(USER_PATH + project + "\\" + WEB_PATH + "\\web.xml");
+        Path source = Paths.get(f + File.separator + "src" + File.separator + "webxml.txt");
+        Path destination = Paths.get(USER_PATH + project + File.separator + WEB_PATH + File.separator + "web.xml");
         String memoryFile = "";
         try (InputStream in = Files.newInputStream(source);
             BufferedReader reader =
@@ -60,13 +60,13 @@ public class FormActions {
     
     public boolean packageExists(String p) {
         String path = buildFolderPath(p);
-        File file = new File(USER_PATH + project + "\\" + SRC_PATH + path);
+        File file = new File(USER_PATH + project + File.separator + SRC_PATH + path);
         return file.exists();
     }
     
     public void doCreatePackage(String p) {
         String path = buildFolderPath(p);
-        Path dir = Paths.get(USER_PATH + project + "\\" +  SRC_PATH + path);
+        Path dir = Paths.get(USER_PATH + project + File.separator + SRC_PATH + path);
         try {
             Files.createDirectories(dir);
         } catch (IOException e) {
@@ -76,9 +76,9 @@ public class FormActions {
         
     public void doCreateAppConfigClass(String p) {
         String f = new File(".").getAbsolutePath();
-        Path source = Paths.get(f + "\\src\\appconfig.txt");
+        Path source = Paths.get(f + File.separator + "src" + File.separator + "appconfig.txt");
         String path = buildFolderPath(p);
-        Path destination = Paths.get(USER_PATH + project + "\\" + SRC_PATH + path + "\\AppConfig.java");        
+        Path destination = Paths.get(USER_PATH + project + File.separator + SRC_PATH + path + File.separator + "AppConfig.java");        
         String memoryFile = "";
         try (InputStream in = Files.newInputStream(source);
             BufferedReader reader =
@@ -101,9 +101,9 @@ public class FormActions {
     
     public void doCreateMvcConfigClass(String p) {
         String f = new File(".").getAbsolutePath();
-        Path source = Paths.get(f + "\\src\\mvcconfig.txt");
+        Path source = Paths.get(f + File.separator + "src" + File.separator + "mvcconfig.txt");
         String path = buildFolderPath(p);
-        Path destination = Paths.get(USER_PATH + project + "\\" + SRC_PATH + path + "\\MvcConfig.java");
+        Path destination = Paths.get(USER_PATH + project+ File.separator + SRC_PATH + path+ File.separator + "MvcConfig.java");
         String memoryFile = "";
         try (InputStream in = Files.newInputStream(source);
             BufferedReader reader =
@@ -126,9 +126,9 @@ public class FormActions {
     
     public void doCreateControllerClass(String p) {
         String f = new File(".").getAbsolutePath();
-        Path source = Paths.get(f + "\\src\\maincontroller.txt");
+        Path source = Paths.get(f+ File.separator + "src" + File.separator + "maincontroller.txt");
         String path = buildFolderPath(p);
-        Path destination = Paths.get(USER_PATH + project + "\\" + SRC_PATH + path + "\\MainController.java");
+        Path destination = Paths.get(USER_PATH + project + File.separator + SRC_PATH + path + File.separator + "MainController.java");
         String memoryFile = "";
         try (InputStream in = Files.newInputStream(source);
             BufferedReader reader =
@@ -151,14 +151,14 @@ public class FormActions {
     
     public void deleteSpringXmlFiles() {
         File file = null;
-        file = new File(USER_PATH + project + "\\" + WEB_PATH + "\\applicationContext.xml");
+        file = new File(USER_PATH + project + File.separator + WEB_PATH + File.separator + "applicationContext.xml");
         file.delete();
-        file = new File(USER_PATH + project + "\\" + WEB_PATH + "\\dispatcher-servlet.xml");
+        file = new File(USER_PATH + project + File.separator + WEB_PATH + File.separator + "dispatcher-servlet.xml");
         file.delete();
     }
  
     public void deleteRedirect() {
-        File file = new File(USER_PATH + project + "\\" + "web\\redirect.jsp");
+        File file = new File(USER_PATH + project + File.separator + "web" + File.separator + "redirect.jsp");
         file.delete();
     }
     
@@ -171,7 +171,7 @@ public class FormActions {
         String[] folders = splitPackage(p);
         String path = "";
         for (String f : folders) {
-            path += "\\" + f;
+            path += File.separator + f;
         }
         return path;
     }
