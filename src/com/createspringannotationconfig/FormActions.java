@@ -46,7 +46,7 @@ public class FormActions {
         } catch (IOException x) {
             System.err.println(x);
         }
-        String[] packages = {configPackage + ".AppConfig", configPackage + "MvcConfig", controllerPackage};
+        String[] packages = {configPackage + ".AppConfig", configPackage + ".MvcConfig", controllerPackage};
         for (int i = 0; i < 3; i++) {            
             memoryFile = memoryFile.replace("{" + i + "}", packages[i]);
         }
