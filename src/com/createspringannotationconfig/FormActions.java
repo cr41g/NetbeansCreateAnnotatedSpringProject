@@ -33,10 +33,10 @@ public class FormActions {
     
     public void doCreateWebXml(String configPackage, String controllerPackage) {
         String f = new File(".").getAbsolutePath();
-        Path source = Paths.get(f + File.separator + "src" + File.separator + "webxml.txt");
+        //Path source = Paths.get(f + File.separator + "src" + File.separator + "webxml.txt");
         Path destination = Paths.get(USER_PATH + project + File.separator + WEB_PATH + File.separator + "web.xml");
         String memoryFile = "";
-        try (InputStream in = Files.newInputStream(source);
+        try (InputStream in = FormActions.class.getClassLoader().getResourceAsStream("webxml.txt");
             BufferedReader reader =
                 new BufferedReader(new InputStreamReader(in))) {
             String line = null;
@@ -76,11 +76,11 @@ public class FormActions {
         
     public void doCreateAppConfigClass(String p) {
         String f = new File(".").getAbsolutePath();
-        Path source = Paths.get(f + File.separator + "src" + File.separator + "appconfig.txt");
+        //Path source = Paths.get(f + File.separator + "src" + File.separator + "appconfig.txt");
         String path = buildFolderPath(p);
         Path destination = Paths.get(USER_PATH + project + File.separator + SRC_PATH + path + File.separator + "AppConfig.java");        
         String memoryFile = "";
-        try (InputStream in = Files.newInputStream(source);
+        try (InputStream in = FormActions.class.getClassLoader().getResourceAsStream("appconfig.txt");
             BufferedReader reader =
                 new BufferedReader(new InputStreamReader(in))) {
             String line = null;
@@ -101,11 +101,11 @@ public class FormActions {
     
     public void doCreateMvcConfigClass(String p) {
         String f = new File(".").getAbsolutePath();
-        Path source = Paths.get(f + File.separator + "src" + File.separator + "mvcconfig.txt");
+        //Path source = Paths.get(f + File.separator + "src" + File.separator + "mvcconfig.txt");
         String path = buildFolderPath(p);
         Path destination = Paths.get(USER_PATH + project+ File.separator + SRC_PATH + path+ File.separator + "MvcConfig.java");
         String memoryFile = "";
-        try (InputStream in = Files.newInputStream(source);
+        try (InputStream in = FormActions.class.getClassLoader().getResourceAsStream("mvcconfig.txt");
             BufferedReader reader =
                 new BufferedReader(new InputStreamReader(in))) {
             String line = null;
@@ -130,7 +130,7 @@ public class FormActions {
         String path = buildFolderPath(p);
         Path destination = Paths.get(USER_PATH + project + File.separator + SRC_PATH + path + File.separator + "MainController.java");
         String memoryFile = "";
-        try (InputStream in = Files.newInputStream(source);
+        try (InputStream in = FormActions.class.getClassLoader().getResourceAsStream("maincontroller.txt");
             BufferedReader reader =
                 new BufferedReader(new InputStreamReader(in))) {
             String line = null;
